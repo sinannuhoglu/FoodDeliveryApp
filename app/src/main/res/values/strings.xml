@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FoodDeliveryApp</string>
+    <string name="home">Anasayfa</string>
+    <string name="fav">Favoriler</string>
+    <string name="basket">Sepet</string>
+
+</resources>

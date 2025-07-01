@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "290045663234",
+    "project_id": "fooddeliveryapp-sinannuhoglu",
+    "storage_bucket": "fooddeliveryapp-sinannuhoglu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290045663234:android:9aa956184e7c10475faf1b",
+        "android_client_info": {
+          "package_name": "com.sinannuhoglu.fooddeliveryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCyArzOFLd4qVqYCGnPPHFAXCx0iOwgms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

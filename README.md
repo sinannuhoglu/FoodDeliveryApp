@@ -1,6 +1,6 @@
 # FoodDeliveryApp
 
-Food Delivery App is a modern food ordering application built with **Jetpack Compose**, designed to allow users to browse meals, add them to their cart, favorite them and log in/register using Firebase Authentication.
+FoodDeliveryApp is a modern food ordering application built with **Jetpack Compose** and follows a clean **MVVM architecture**. Users can browse meals, add items to their cart, mark favorites and log in/register using Firebase Authentication.
 
 ---
 
@@ -18,47 +18,49 @@ Food Delivery App is a modern food ordering application built with **Jetpack Com
 com.sinannuhoglu.fooddeliveryapp/
 ├── model/          # Data models
 ├── network/        # Retrofit API client and service
-├── ui/             # UI screens and ViewModels
-│   ├── basket/    # Basket screen 
-│   ├── detail/    # Food detail screen
-│   ├── favorite/  # Favorites screen
-│   ├── home/      # Home screen
-│   ├── login/     # Login screen
-│   ├── register/  # Register screen
-│   └── welcome/   # Welcome screen
-├── navigation/    # Navigation graph
-├── di/            # Dependency Injection modules
-├── util/          # Utility classes (Constants, UserSession, etc.)
-└── MainActivity.kt  # Navigation host and Hilt entry point
+├── ui/             # Screens + ViewModels (MVVM)
+│   ├── basket/    
+│   ├── detail/    
+│   ├── favorite/  
+│   ├── home/      
+│   ├── login/     
+│   ├── register/  
+│   └── welcome/   
+├── navigation/      # Compose navigation graph
+├── di/              # Hilt dependency injection setup
+├── util/            # Utility files (Constants, UserSession, etc.)
+└── MainActivity.kt  # Entry point & Navigation host
 ```
 
 ---
 
 ## Technologies Used
 
-| Technology         | Description                  |
-|--------------------|------------------------------|
-| **Kotlin**         | Main language                |
-| **Jetpack Compose**| Declarative UI framework     |
-| **Hilt**           | Dependency Injection        |
-| **Retrofit**       | Networking library          |
-| **OkHttp**         | HTTP client                 |
-| **Coil**           | Image loading              |
-| **Firebase Auth**  | Authentication             |
-| **Navigation Compose** | Screen navigation     |
-| **Coroutines**     | Asynchronous operations    |
-| **Material3**      | UI components             |
+| Technology           | Purpose                          |
+|----------------------|----------------------------------|
+| **Kotlin**           | Main programming language        |
+| **Jetpack Compose**  | Declarative UI                   |
+| **MVVM**             | Architecture pattern            |
+| **Hilt**             | Dependency injection           |
+| **Retrofit**         | REST API communication          |
+| **OkHttp**           | HTTP client                     |
+| **Firebase Auth**    | Authentication                  |
+| **Coil**             | Image loading                   |
+| **Coroutines**       | Asynchronous operations        |
+| **Navigation Compose**| Navigation system            |
+| **Material3**        | Modern UI components          |
 
 ---
 
 ## Features
 
-- Browse and search food items
+- Search food items easily
+- Add/remove favorites with one tap
 - Add to basket with quantity selection
-- Mark items as favorites (local only)
-- Firebase login/register
-- Modern Compose UI with gradient backgrounds
-- Loading indicators & toasts
+- Firebase authentication (Sign in / Sign up)
+- Gradient backgrounds and modern Compose UI
+- Smooth navigation with bottom bar
+- Toasts and loading indicators
 
 ---
 

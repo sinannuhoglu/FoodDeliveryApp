@@ -1,36 +1,66 @@
 # FoodDeliveryApp
 
-FoodDeliveryApp is a modern food ordering application built with **Jetpack Compose** and follows a clean **MVVM architecture**. Users can browse meals, add items to their cart, mark favorites and log in/register using Firebase Authentication.
+FoodDeliveryApp is a modern food ordering application built with **Jetpack Compose**, designed with clean **MVVM** architecture. It allows users to browse food items, add to basket, favorite meals, set delivery addresses via live map location and complete orders using Firebase Realtime Database.
 
 ---
 
 ## Screenshots
-| Welcome Screen | Sign In Screen | Sign Up Screen | Home Screen | Detail Screen | Basket Screen |
-|----------------|----------------|----------------|-------------|---------------|---------------|
-| ![Image](https://github.com/user-attachments/assets/9794ef81-535a-4ae6-8659-0c3709593f14) | ![Image](https://github.com/user-attachments/assets/c433cdf9-713a-46b2-b442-93347444fef9) | ![Image](https://github.com/user-attachments/assets/b12dd83d-8fdd-4519-a370-e7639063bf59) | ![Image](https://github.com/user-attachments/assets/7c52a3bc-0d5d-465d-9eb4-be643baf7865) | ![Image](https://github.com/user-attachments/assets/33747393-4f88-4c18-b3f8-549a4d8e5e61) | ![Image](https://github.com/user-attachments/assets/c2dbfb44-19ed-48a0-b227-00d2b2c41fad) |
 
+| Home Screen | Detail Screen | Basket Screen | Address Screen |
+|-------------|---------------|---------------|----------------|
+| <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/20ad3c79-3c72-4e36-a763-995cd9c89b52" /> | <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/39c70c28-275b-4a24-aba3-6cec7374aada" /> | <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/73ad7be1-c09e-42ff-9019-f64249d5cc18" /> | <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/def866ec-7e59-4dbe-bf51-29b23f833bbe" /> |
+
+| Welcome Screen | Sign In Screen | Sign Up Screen |
+|----------------|----------------|----------------|
+| <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/833cbaa5-23ed-44cf-bf92-1ed170118f0a" /> | <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/9498239b-42bf-44a0-8d75-26980ed42df9" /> | <img width="1194" height="2532" alt="Image" src="https://github.com/user-attachments/assets/41276cf6-227f-4a44-acae-dd9ef97f2891" /> |
 
 ---
 
 ## Project Structure
 
-```text
+```plaintext
 com.sinannuhoglu.fooddeliveryapp/
-├── model/          # Data models
-├── network/        # Retrofit API client and service
-├── ui/             # Screens + ViewModels (MVVM)
-│   ├── basket/    
-│   ├── detail/    
-│   ├── favorite/  
-│   ├── home/      
-│   ├── login/     
-│   ├── register/  
-│   └── welcome/   
-├── navigation/      # Compose navigation graph
-├── di/              # Hilt dependency injection setup
-├── util/            # Utility files (Constants, UserSession, etc.)
-└── MainActivity.kt  # Entry point & Navigation host
+├── data
+│   └── repository/         # Address repository for geocoding
+├── di/
+│   └── AppModule.kt        # Hilt dependency injection setup
+├── model/                  # Data models (e.g., BasketItem, FoodItem)
+├── navigation/
+│   └── NavGraph.kt         # Compose navigation graph
+├── network/
+│   └── ApiService.kt       # Retrofit API service
+├── ui/
+│   ├── address/            # Address screen (map & address input)
+│   ├── basket/             # Basket screen
+│   ├── bottomnav/          # Bottom navigation bar
+│   ├── components/         # Reusable UI components (buttons, fields, etc.)
+│   ├── delivery/           # Delivery repository (Firebase orders)
+│   ├── detail/             # Food detail screen
+│   ├── favorite/           # Favorite screen
+│   ├── home/               # Home screen with search and favorites
+│   ├── login/              # Login screen
+│   ├── register/           # Register screen
+│   ├── theme/             # UI colors, typography, constants
+│   └── welcome/           # Welcome screen
+├── util/                   # Utility classes (constants, user session, error utils)
+├── FoodDeliveryApp.kt      # Hilt application entry point
+└── MainActivity.kt         # Main Compose activity and NavGraph host
 ```
+
+---
+
+## Features
+
+- Search and browse meals
+- Add/remove favorites (local state)
+- Add to basket with quantity control
+- Set delivery address using Google Maps (with live location and marker support)
+- Address details & order confirmation
+- Firebase authentication (sign in/register)
+- Modern Compose UI with gradient backgrounds
+- Toast and snackbar feedback
+- Smooth navigation with bottom bar
+- Realtime order saving in Firebase
 
 ---
 
@@ -40,27 +70,17 @@ com.sinannuhoglu.fooddeliveryapp/
 |----------------------|----------------------------------|
 | **Kotlin**           | Main programming language        |
 | **Jetpack Compose**  | Declarative UI                   |
-| **MVVM**             | Architecture pattern            |
-| **Hilt**             | Dependency injection           |
+| **MVVM**             | Clean architecture pattern       |
+| **Hilt**             | Dependency injection             |
 | **Retrofit**         | REST API communication          |
 | **OkHttp**           | HTTP client                     |
 | **Firebase Auth**    | Authentication                  |
+| **Firebase Realtime DB** | Stores order data along with address information in real-time |
+| **Google Maps Compose** | Map view and marker logic     |
 | **Coil**             | Image loading                   |
 | **Coroutines**       | Asynchronous operations        |
 | **Navigation Compose**| Navigation system            |
 | **Material3**        | Modern UI components          |
-
----
-
-## Features
-
-- Search food items easily
-- Add/remove favorites with one tap
-- Add to basket with quantity selection
-- Firebase authentication (Sign in / Sign up)
-- Gradient backgrounds and modern Compose UI
-- Smooth navigation with bottom bar
-- Toasts and loading indicators
 
 ---
 

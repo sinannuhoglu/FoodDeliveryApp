@@ -80,6 +80,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.material:material-icons-extended")
 
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
@@ -87,18 +91,18 @@ dependencies {
 
     // Firebase
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+
+    // Google Play Services & Maps
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.maps.android:maps-compose:2.11.4")
+    implementation("com.google.accompanist:accompanist-permissions:0.28.0")
 
     // Coil (image loading)
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    // Network (Retrofit, OkHttp)
+    // Network (Retrofit, OkHttp, Gson)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
@@ -115,6 +119,9 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("com.airbnb.android:lottie:6.1.0")
 
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -123,4 +130,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Kotlin Script runtime
+    implementation(kotlin("script-runtime"))
 }
+

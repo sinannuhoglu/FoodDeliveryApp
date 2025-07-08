@@ -99,7 +99,7 @@ fun PreviewFoodItemCard() {
     val sampleItem = FoodItem(
         id = 1,
         name = "Pizza Margherita",
-        imageUrl = "https://via.placeholder.com/100",
+        imageUrl = "",
         price = 150,
         isFavorite = true
     )

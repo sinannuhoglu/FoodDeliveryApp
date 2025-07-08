@@ -37,7 +37,7 @@ fun QuantitySelector(
     ) {
         IconButton(
             onClick = onDecrease,
-            modifier = Modifier.padding(end = 8.dp) // Spacing between buttons
+            modifier = Modifier.padding(end = 8.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_remove),
@@ -46,7 +46,11 @@ fun QuantitySelector(
             )
         }
 
-        Text(text = "$quantity x $price ₺", fontSize = 18.sp, modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = "$quantity x $price ₺",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
 
         IconButton(
             onClick = onIncrease,

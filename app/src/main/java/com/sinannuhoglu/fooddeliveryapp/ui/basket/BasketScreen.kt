@@ -1,58 +1,59 @@
 package com.sinannuhoglu.fooddeliveryapp.ui.basket
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sinannuhoglu.fooddeliveryapp.ui.components.BasketItemRow
 import com.sinannuhoglu.fooddeliveryapp.ui.components.OrderSummaryCard
 import com.sinannuhoglu.fooddeliveryapp.ui.bottomnav.BottomBar
-import androidx.compose.ui.Alignment
+import com.sinannuhoglu.fooddeliveryapp.navigation.Routes
+import com.sinannuhoglu.fooddeliveryapp.ui.theme.UiConstants
+import kotlinx.coroutines.launch
 
 @Composable
 fun BasketScreen(
     navController: NavController,
     viewModel: BasketViewModel
 ) {
-    val context = LocalContext.current
     val items by viewModel.basketItems.collectAsState()
 
     val totalPrice = items.sumOf {
         (it.yemek_fiyat.toIntOrNull() ?: 0) * (it.yemek_siparis_adet.toIntOrNull() ?: 1)
     }
 
-    val gradientBrush = Brush.verticalGradient(
-        colors = listOf(Color.White, Color(0xFFD3D3D3))
-    )
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
 
     Scaffold(
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = { BottomBar(navController = navController) },
+        snackbarHost = {
+            SnackbarHost(
+                snackbarHostState,
+                modifier = Modifier.padding(bottom = UiConstants.snackbarPadding)
+            )
+        }
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(brush = gradientBrush)
+                .background(brush = UiConstants.gradientBackground)
                 .padding(paddingValues),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(UiConstants.spacerHeight))
             Text(
                 text = "Bir Tıkla Sofranda",
-                style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
-                color = Color.Gray
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = UiConstants.headerFontSize),
+                color = UiConstants.mainGrayTextColor
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(UiConstants.spacerHeight))
 
             LazyColumn(
                 modifier = Modifier.weight(1f)
@@ -67,7 +68,13 @@ fun BasketScreen(
             }
 
             OrderSummaryCard(totalPrice = totalPrice) {
-                Toast.makeText(context, "Siparişiniz alındı!", Toast.LENGTH_SHORT).show()
+                if (items.isEmpty() || totalPrice == 0) {
+                    scope.launch {
+                        snackbarHostState.showSnackbar("Sepetiniz boş!")
+                    }
+                } else {
+                    navController.navigate(Routes.ADDRESS)
+                }
             }
         }
     }

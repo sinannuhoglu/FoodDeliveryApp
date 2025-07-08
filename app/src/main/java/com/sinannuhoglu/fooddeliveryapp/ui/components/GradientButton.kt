@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -36,4 +37,10 @@ fun GradientButton(
     ) {
         Text(text = text, color = Color.White, style = MaterialTheme.typography.labelLarge)
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGradientButton() {
+    GradientButton(text = "Kayıt Ol", onClick = {})
 }

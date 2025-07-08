@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sinannuhoglu.fooddeliveryapp.R
@@ -34,7 +35,10 @@ fun BasketItemRow(item: BasketItem, onRemove: (BasketItem) -> Unit) {
             Spacer(modifier = Modifier.width(8.dp))
             Column {
                 Text(text = item.yemek_adi, style = MaterialTheme.typography.bodyMedium)
-                Text(text = "Adet: ${item.yemek_siparis_adet}", style = MaterialTheme.typography.bodySmall)
+                Text(
+                    text = "Adet: ${item.yemek_siparis_adet}",
+                    style = MaterialTheme.typography.bodySmall
+                )
                 Text(
                     text = "${(item.yemek_fiyat.toIntOrNull() ?: 0) * (item.yemek_siparis_adet.toIntOrNull() ?: 1)} ₺",
                     style = MaterialTheme.typography.bodyLarge
@@ -53,4 +57,19 @@ fun BasketItemRow(item: BasketItem, onRemove: (BasketItem) -> Unit) {
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewBasketItemRow() {
+    val exampleItem = BasketItem(
+        sepet_yemek_id = "1",
+        yemek_adi = "Pizza",
+        yemek_resim_adi = "",
+        yemek_fiyat = "80",
+        yemek_siparis_adet = "2",
+        kullanici_adi = "testuser"
+    )
+
+    BasketItemRow(item = exampleItem, onRemove = {})
 }

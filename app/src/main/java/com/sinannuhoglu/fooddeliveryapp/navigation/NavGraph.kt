@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.google.gson.Gson
 import com.sinannuhoglu.fooddeliveryapp.model.FoodItem
+import com.sinannuhoglu.fooddeliveryapp.ui.address.AddressScreen
 import com.sinannuhoglu.fooddeliveryapp.ui.basket.BasketScreen
 import com.sinannuhoglu.fooddeliveryapp.ui.basket.BasketViewModel
 import com.sinannuhoglu.fooddeliveryapp.ui.detail.DetailScreen
@@ -24,6 +25,7 @@ object Routes {
     const val FAVORITES = "favorites"
     const val BASKET = "basket"
     const val DETAIL = "detail/{item}"
+    const val ADDRESS = "address"
 }
 
 @Composable
@@ -62,13 +64,23 @@ fun FoodNavGraph(
             BasketScreen(navController = navController, viewModel = basketViewModel)
         }
 
+        composable(Routes.ADDRESS) {
+            AddressScreen(navController = navController, basketViewModel = basketViewModel)
+        }
+
         composable(
             route = Routes.DETAIL,
-            arguments = listOf(navArgument("item") { type = androidx.navigation.NavType.StringType })
+            arguments = listOf(navArgument("item") {
+                type = androidx.navigation.NavType.StringType
+            })
         ) { backStackEntry ->
             val json = backStackEntry.arguments?.getString("item")
             val foodItem = Gson().fromJson(json, FoodItem::class.java)
-            DetailScreen(navController = navController, foodItem = foodItem, basketViewModel = basketViewModel)
+            DetailScreen(
+                navController = navController,
+                foodItem = foodItem,
+                basketViewModel = basketViewModel
+            )
         }
     }
 }

@@ -77,4 +77,8 @@ class BasketViewModel @Inject constructor(
             }
         }
     }
+
+    fun clearBasket() {
+        _basketItems.value = emptyList()
+    }
 }

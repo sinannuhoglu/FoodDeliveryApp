@@ -37,7 +37,7 @@ fun FoodImage(
 @Composable
 fun FoodImagePreview() {
     FoodImage(
-        imageUrl = "https://example.com/food_image.jpg",
+        imageUrl = "",
         name = "Örnek Yemek",
         size = 150
     )
